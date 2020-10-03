@@ -104,3 +104,28 @@ complete: function () {
 
 </li>
 </ul>
+
+<h2>Custom File Name</h2>
+<p>If you want to change or custom file excel name, you need add parameter in function(parameter) at line 2 jquery.tableToExcel.js file.</p>
+<pre><code>  
+    $.fn.tblToExcel = function (parameter) {
+        ....
+</code></pre>
+
+<p>And then change this code</p>
+<pre>
+<code>
+window.location.href = uri + base64(format(template, ctx));
+</code>
+</pre>
+<p>with this :</p>
+<pre>
+<code>
+var link = document.createElement("a");
+link.download = parameter;
+link.href = uri + base64(format(template, ctx));
+link.click();
+</code>
+</pre>
+
+<p>On your view just call the function with parameter as a file name, like a <b>tableToExcel('my_excel_file.xls')</b></p>
